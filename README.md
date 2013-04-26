@@ -5,10 +5,6 @@ DBG.js  Debugging Keywords for JavaScript
 
 see [DBG.html] for demo
 
-DBG always returns the array of DBG logs
-
-Look at the DBG object using either Firebug, Webkit Instpector or Internet Explorer Debeloper Tools
-
 ## EXAMPLE USAGE
 
 ```javascript
@@ -37,3 +33,7 @@ wait5sec();
 TIME
 })();
 ```
+
+getting the DBG object always returns the array of DBG logs
+
+Look at the DBG object using either Firebug, Webkit Instpector or Internet Explorer Debeloper Tools
