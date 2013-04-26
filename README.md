@@ -33,9 +33,9 @@ function wait5sec() {
 // demonstraites the TIME keyword which creates a timestamp for the last time that line was accessed
 (function(){
 	// timer
-	TIME = "timer";
+	TIME;
 	wait5sec();
-	TIME ="timer";
+	TIME;
 })();
 
 //output a DBG report.
