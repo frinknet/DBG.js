@@ -1,13 +1,17 @@
 DBG.js
 ======
 
-DBG.js  Debug Keywords for JavaScript
+DBG.js  Debugging Keywords for JavaScript
 
-see DBG.html for demo
+see [DBG.html] for demo
 
+DBG always returns the array of DBG logs
 
-/* EXAMPLE USAGE */
+Look at the DBG object using either Firebug, Webkit Instpector or Internet Explorer Debeloper Tools
 
+## EXAMPLE USAGE
+
+```javascript
 // logs the line and the function scope at this line
 DBG
 
@@ -32,5 +36,4 @@ TIME
 wait5sec();
 TIME
 })();
-
-// DBG always returns the array of DBG logs
+```
