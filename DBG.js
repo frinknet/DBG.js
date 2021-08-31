@@ -9,6 +9,8 @@
 	const
 	N=null,
 	I=(n,...t)=>{
+	//n=
+	//t=tests
 		let l=t.length
 		n=n==null
 			?n+''
@@ -19,6 +21,11 @@
 	},
 	F=!1,
 	T=!0,
+	Y=(e,a,s,t)=>(typeof a=='function'&&(t=s,s=a,a=e,e=self),Object.defineProperty(e,s,{get:t||s,set:s}),
+	//e=element
+	//a=attribute
+	//s=setter
+	//t=trigger
 	X(e,r,o,x)=>I(e,N,{})
 	//e=entry
 	//r=reproductions
@@ -33,12 +40,7 @@
 			o.indexOf(e)<0&&r.push(s)&&y.push(e),
 			x
 		),
-	Y=(e,a,s,t)=>(typeof a=='function'&&(t=s,s=a,a=e,e=self),Object.defineProperty(e,s,{get:t||s,set:s}),
-	//e=element
-	//a=attribute
-	//s=setter
-	//t=trigger
-	Z=(a,p)=>(p=p||self,delete p[(_=>{for(_ in p)if(a==p[_])return _})()]),
+	
 	re=(U=>{
 		let
 		e=(new Error).stack.split("\n")[1],
