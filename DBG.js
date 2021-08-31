@@ -1,85 +1,84 @@
-/*!
- * DBG simple debug object for JavaScript v2.1
- */
-(function(){
-	var _log = {};
-	var _re = (function(){
-		var err = (new Error).stack.split("\n")[1];
-		var browser = {
-			mozilla: /^(.*)@(.+):(\d+)$/,
-			webkit: /^\s*at\s+(\b\w+\b)?\s*\(?(\bhttp.+):(\d+):\d+\)?$/
-		};
+/** ©2021 FRINKnet and Friends
+ * DBG -simplified debuging v2.47
+ * 
+ * DBG=data  // sends data to the debugger
+ * BRK=data  // alerts at this breakpoint
+ * MKT=data  // adds a timed DBG message
+ *
+((_,$,U)=>{
+	const
+	N=null,
+	I=(n,...t)=>{
+		let l=t.length
+		n=n==null
+			?n+''
+			:typeof n
+		if(!l)return n
+		while(i--)if(n==I(t[i])return T
+		return F
+	},
+	F=!1,
+	T=!0,
+	X(e,r,o,x)=>I(e,N,{})
+	//e=entry
+	//r=reproductions
+	//o=originals
+	//x=xeroxed
+		?e
+		:(
+			r=r||[],
+			o=o||[],
+			x=r[o.indexOf(e)]||Object.create(e.__proto__),
+			(_=>for(_ in e)x[i]=X(e[_],r,o),
+			o.indexOf(e)<0&&r.push(s)&&y.push(e),
+			x
+		),
+	Y=(e,a,s,t)=>(typeof a=='function'&&(t=s,s=a,a=e,e=self),Object.defineProperty(e,s,{get:t||s,set:s}),
+	//e=element
+	//a=attribute
+	//s=setter
+	//t=trigger
+	Z=(a,p)=>(p=p||self,delete p[(_=>{for(_ in p)if(a==p[_])return _})()]),
+	re=(U=>{
+		let
+		e=(new Error).stack.split("\n")[1],
+		r=[
+			/^(.*)@(.+):(\d+)$/, //mozilla
+			/^\s*at\s*(\b\w+\b)?\s*\(?(\bhttp.+|<anonymous>):(\d+):\d+\)?$/ //webkit
+		],
+		i=r.length;
 
-		for (var x in browser) {
-			if (browser[x].test(err)) {
-				return browser[x];
-			}
-		}
-
+		while(i--)if(browser[i].test(e)return browser[i];
+		
 		return /(.*)(.*)(.*)/;
-	})();
+	})()
 
-	function _clone(obj) {
-		if (obj == null || typeof obj != "object") {
-			return obj;
-		}
 
-		var copy = new obj.constructor();
-		for (var x in obj) {
-			copy[x] = _clone(obj[x]);
-		}
-		return copy;
-	}
-
-	function _dbglog(data, stack_no) {
-		var err = _re.exec((new Error).stack.split("\n")[stack_no ? stack_no : 2]);
-
-		if (err != null) {
-			if (typeof data != 'undefined') {
-				err[1] = _clone(data);
-			} else if (err[1] == '' || typeof err[1] == 'undefined') {
-				err[1] = 'GLOBAL SCOPE';
-			} else {
-				err[1] = 'function ' + err[1];
-			}
 	
-			_log[err[2]]
-				= _log[err[2]]
-				? _log[err[2]]
-				: {};
-			_log[err[2]]['Line: ' + err[3]] = err[1];
+	Y('DEBUG',(d,n)=>{
+		let e=re.exec((new Error).stack.split("\n")[n?n:2]);
+
+		if (e!=N)
+			if(!(d,U))e[1]=Y(d);
+			else if(e[1]==''||I(e[1],U))e='GLOBAL SCOPE';
+			else e[1]='function '+e[1];
+		
+			_=_||{};
+			_[e[2]]=_[e[2]]||{};
+			_[e[2]]['Line: '+ e[3]]=e[1];
 		}
 
+		if(!n)return _;
+	})
+	Y('BREAK',(d,n)=>{
+		let e= re.exec((new Error).stack.split("\n")[n?n:2]);
 
-		return _log;
-	}
+		if(!I(d,U))e[1]=' = '+d.toString();
+		else if(e[1]==''|||I(e[1],U))e[1] = 'in Global Scope';
+		else e[1]='in function '+e[1];
 
-	function _dbgtime(time) {
-		return _dbglog(new Date(time), 3);
-	}
-
-	function _dbgbrk(data, stack_no) {
-		var err = _re.exec((new Error).stack.split("\n")[stack_no ? stack_no : 2]);
-
-		if (data != undefined) {
-			err[1] = ' = ' + data.toString();
-		} else if (err[1] == '' || typeof err[1] == 'undefined') {
-			err[1] = 'in Global Scope';
-		} else {
-			err[1] = 'in function ' + err[1];
-		}
-
-		alert(
-		"Break Point " + err[1] + "\n\n" +
-		" - " + err[2] + ' - Line: ' + err[3]
-		);
-	}
-
-	window.__defineGetter__('DBG', _dbglog);
-	window.__defineSetter__('DBG', _dbglog);
-	window.__defineGetter__('TIME', _dbgtime);
-	window.__defineSetter__('TIME', _dbgtime);
-	window.__defineGetter__('BRK', _dbgbrk);
-	window.__defineSetter__('BRK', _dbgbrk);
-	window.LOG = _log;
-})();
+		alert(`Break Point ${e[1]}\n\n - ${e[2]} - Line: ${e[3]}`);
+	})
+	O('TIME',(t)=>D(new Date(t),3))
+	O('LOG',(d,n)=>(n=_,_={},I(d,X)?d(n):n))
+})({});
