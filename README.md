@@ -21,7 +21,7 @@ DBG = ['report', 'this is the way it is'];
 BRK = "breakpoint";
 
 // Log the current time
-TIME;
+NOW;
 
 // demonstraites a simple function logging the line number and scope
 function wait5sec() {
@@ -33,9 +33,9 @@ function wait5sec() {
 // demonstraites the TIME keyword which creates a timestamp for the last time that line was accessed
 (function(){
 	// timer
-	TIME;
+	NOW;
 	wait5sec();
-	TIME;
+	NOW;
 })();
 
 //output a DBG report.
